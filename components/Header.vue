@@ -7,11 +7,7 @@
     <div class="flex justify-center">
       <nav role="navigation">
         <ul class="dropdown-menu">
-          <li v-for="link in filteredLinks" :key="link.id" class="menu-item hover:font-semibold">
-            <nuxt-link :to="link.url">
-              {{ link.label }}
-            </nuxt-link>
-          </li>
+          <MenuItem v-for="link in filteredLinks" :key="link.id" :link="link" :links="links" class="menu-item hover:font-semibold" />
         </ul>
       </nav>
     </div>
@@ -20,7 +16,10 @@
 <script>
 
 import linksQuery from '~/apollo/queries/link/links'
+import MenuItem from '~/components/MenuItem'
 export default {
+  components: { MenuItem },
+
   data () {
     return {
       links: []
@@ -53,14 +52,6 @@ export default {
       list-style: none;
       margin: 0;
       padding-left: 0;
-  .menu-item{
-      color:rgb(0, 0, 0);
-      display: block;
-      float: left;
-      padding: 1rem;
-      position: relative;
-      text-decoration: none;
-    }
   }
 
   </style>
