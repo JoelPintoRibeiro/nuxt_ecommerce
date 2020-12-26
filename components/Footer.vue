@@ -1,5 +1,5 @@
 <template>
-  <div class="flex justify-between m-6">
+  <div class="flex justify-between bg-black items-center px-4">
     <p class="text-xs font-semibold text-gray-600">
       NUXT.JS & STRAPI STATIC SITE WITH SNIPCART E-COMMERCE.
     </p>

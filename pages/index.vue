@@ -1,17 +1,7 @@
 <template>
-  <div>
-    <a href="#" class="snipcart-user-profile">
-      <span class="snipcart-user-email">Login</span>
-    </a>
-    <a href="#" class="snipcart-user-profile">
-      User profile
-    </a>
-    <a href="#" class="snipcart-user-logout">
-      Logout
-    </a>
-    <div class="snipcart-summary" />
-    <div class="m-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-4">
-      <div v-for="p in products" :key="p.id" class="border rounded-lg bg-gray-100 hover:shadow-lg">
+  <div class="grid index-page">
+    <div class="m-6 grid grid-cols-1 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 gap-4">
+      <div v-for="p in products" :key="p.id" class="border rounded-lg bg-gray-100 hover:shadow-lg product-box">
         <nuxt-link :to="`/products/${p.id}`">
           <div class="rounded-t-lg bg-white pt-2 pb-2">
             <img class="crop mx-auto" :src="p.image">
@@ -35,7 +25,8 @@ import productsQuery from '~/apollo/queries/product/products'
 export default {
   data () {
     return {
-      products: []
+      products: [],
+      links: []
     }
   },
   apollo: {
@@ -44,52 +35,17 @@ export default {
       query: productsQuery
     }
   }
+
 }
 </script>
 
-  <style>
-    /* Sample `apply` at-rules with Tailwind CSS
-    .container {
-    @apply min-h-screen flex justify-center items-center text-center mx-auto;
-    }
-    */
-    .container {
-    margin: 0 auto;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    }
+  <style lang="scss">
+  .index-page{
+    grid-template-rows: repeat(1fr);
+    grid-template-columns: 1fr;
+  }
+  .product-box{
+    height: 150px;
+  }
 
-    .title {
-    font-family:
-    'Quicksand',
-    'Source Sans Pro',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    sans-serif;
-    display: block;
-    font-weight: 300;
-    font-size: 100px;
-    color: #35495e;
-    letter-spacing: 1px;
-    }
-
-    .subtitle {
-    font-weight: 300;
-    font-size: 42px;
-    color: #526488;
-    word-spacing: 5px;
-    padding-bottom: 15px;
-    }
-
-    .links {
-    padding-top: 15px;
-    }
   </style>
-</template>

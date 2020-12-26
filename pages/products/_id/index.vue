@@ -22,7 +22,6 @@
             :data-item-description="product.description"
             :data-item-image="product.image"
             :data-item-name="product.title"
-            v-bind="customFields"
           >
             Add to cart
           </button>
