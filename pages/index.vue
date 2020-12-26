@@ -30,15 +30,19 @@
   </div>
 </template>
 <script>
+
+import productsQuery from '~/apollo/queries/product/products'
 export default {
   data () {
     return {
       products: []
     }
   },
-  async created () {
-    const res = await fetch('https://joelstrapi.herokuapp.com/products')
-    this.products = await res.json()
+  apollo: {
+    products: {
+      prefetch: true,
+      query: productsQuery
+    }
   }
 }
 </script>

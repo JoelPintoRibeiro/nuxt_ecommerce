@@ -1,4 +1,12 @@
 export default {
+
+  vue: {
+    config: {
+      devtools: true
+    }
+  },
+  dev: true,
+  devtools: true,
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',
 
@@ -31,7 +39,9 @@ export default {
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
   ],
-
+  env: {
+    storeUrl: 'https://joelstrapi.herokuapp.com/'
+  },
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: true,
 
@@ -46,9 +56,16 @@ export default {
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
     // https://go.nuxtjs.dev/axios
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    '@nuxtjs/apollo'
   ],
-
+  apollo: {
+    clientConfigs: {
+      default: {
+        httpEndpoint: 'https://joelstrapi.herokuapp.com/graphql'
+      }
+    }
+  },
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {},
 

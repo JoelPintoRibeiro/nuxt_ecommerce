@@ -1,0 +1,22 @@
+query Links {
+  links {
+    id
+    label
+    url
+    categories {
+      id
+      name
+      code
+    }
+    link_parent {
+      id
+      label
+      url
+    }
+    links_child {
+      id
+      label
+      url
+    }
+  }
+}

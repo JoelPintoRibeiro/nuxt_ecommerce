@@ -2,6 +2,13 @@
   <div class="flex justify-center">
     <div class="max-w-screen-lg flex flex-col min-h-screen w-full">
       <NavBar />
+      <div class="flex">
+        <div v-for="link in links" :key="link.id" class="flex col">
+          <nuxt-link :to="link.url">
+            {{ link.label }}
+          </nuxt-link>
+        </div>
+      </div>
       <Nuxt class="flex-grow" />
       <Footer />
     </div>
@@ -9,10 +16,23 @@
   </div>
 </template>
 <script>
+
 import NavBar from '@/components/NavBar'
 import Footer from '@/components/Footer'
+import linksQuery from '~/apollo/queries/link/links'
 export default {
-  components: { Footer, NavBar }
+  components: { Footer, NavBar },
+  data () {
+    return {
+      links: []
+    }
+  },
+  apollo: {
+    links: {
+      prefetch: true,
+      query: linksQuery
+    }
+  }
 }
 </script>
 <style>
