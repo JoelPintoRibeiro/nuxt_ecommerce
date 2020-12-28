@@ -13,9 +13,6 @@
             <div class="mt-1 text-gray-600">
               {{ product.description }}
             </div>
-            <div class="mt-1 text-gray-600">
-              {{ product.price }}
-            </div>
           </div>
           <button
             class="snipcart-add-item mt-4 bg-white border border-gray-200 d hover:shadow-lg text-gray-700 font-semibold py-2 px-4 rounded shadow"
@@ -35,11 +32,18 @@
 </template>
 
 <script>
+import categoriesQuery from '~/apollo/queries/category/categories'
 export default {
   data () {
     return {
       product: null,
       storeUrl: process.env.storeUrl
+    }
+  },
+  apollo: {
+    products: {
+      prefetch: true,
+      query: categoriesQuery
     }
   },
   computed: {

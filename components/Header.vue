@@ -1,7 +1,7 @@
 <template>
   <div class="grid header-section">
     <div class="flex items-center justify-center">
-      <img class="logo img-responsive" src="https://tiboinshape.com/shop/img/tibo-inshape-1529505744.jpg" alt="Tibo Inshape" width="150" height="80">
+      <img class="logo img-responsive" src="https://laboutiquewebdesanimaux.com/wp-content/uploads/2019/01/Logo-BWA.jpg" alt="Tibo Inshape" width="150" height="80">
     </div>
 
     <div class="flex justify-center">

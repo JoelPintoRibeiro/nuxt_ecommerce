@@ -13,6 +13,9 @@
             <div class="mt-1 text-sm text-gray-700">
               {{ p.description }}
             </div>
+            <div class="mt-1 text-sm text-gray-700">
+              {{ p.price }} €
+            </div>
           </div>
         </nuxt-link>
       </div>

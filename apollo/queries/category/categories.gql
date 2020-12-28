@@ -1,0 +1,12 @@
+query Category {
+  categories(where: { id: $id }) {
+    id
+    name
+    code
+    products {
+      id
+      title
+      price
+    }
+  }
+}

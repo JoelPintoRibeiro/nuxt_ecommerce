@@ -1,13 +1,19 @@
 <template>
-  <li :key="completeItem.id" class="menu-item hover:font-semibold" >
-    <nuxt-link v-if="completeItem.links_child && completeItem.links_child.lenght===0" :to="completeItem.url">
+  <li :key="completeItem.id" class="menu-item hover:font-semibold">
+    <nuxt-link v-if="completeItem.links_child && completeItem.links_child.length===0" :to="'category'+completeItem.url">
       {{ completeItem.label }}
     </nuxt-link>
-    <v-else @click="childVisible=!childVisible">
+    <span v-if="completeItem.links_child && completeItem.links_child.length>0" @click="childVisible=!childVisible">
       {{ completeItem.label }}
-    </v-else>
+    </span>
     <ul v-if="completeItem.links_child && childVisible">
-      <MenuItem v-for="sublink in completeItem.links_child" :key="sublink.id" :link="sublink" :links="links" class="menu-item hover:font-semibold" />
+      <MenuItem
+        v-for="sublink in completeItem.links_child"
+        :key="sublink.id"
+        class="bg-black text-white menu-item hover:font-semibold"
+        :link="sublink"
+        :links="links"
+      />
     </ul>
   </li>
 </template>
@@ -37,11 +43,19 @@ export default {
 
   <style lang="scss">
 .menu-item{
-      color:rgb(0, 0, 0);
       display: block;
       float: left;
-      padding: 1rem;
+      overflow:visible;
+      min-width: 75px;
       position: relative;
       text-decoration: none;
+      ul{
+        height: 100%;
+        overflow:auto;
+      }
+    }
+    .parent-item{
+      width: 70px;
+    overflow: visible;
     }
   </style>
