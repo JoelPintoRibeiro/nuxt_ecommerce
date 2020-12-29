@@ -10,7 +10,8 @@
     "lint:js": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "lint": "npm run lint:js",
     "test": "jest",
-    "generate-build": "nuxt build && nuxt export"
+    "generate-build": "nuxt build && nuxt export",
+    "heroku-postbuild": "npm run build"
   },
   "dependencies": {
     "@nuxtjs/apollo": "^4.0.1-rc.5",
