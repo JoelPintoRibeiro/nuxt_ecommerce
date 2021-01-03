@@ -1,5 +1,5 @@
-query ProductsByCategories {
-  categories(where: { id_contains: [1, 2, 3] }) {
+query ProductsByCategories($categoriesId: [String]) {
+  categories(where: { code_contains: $categoriesId }) {
     id
     products {
       id

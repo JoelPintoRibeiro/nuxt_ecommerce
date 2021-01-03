@@ -14,12 +14,12 @@ export const mutations = {
   }
 }
 export const getters = {
-  getCategoryByLink: state => (link) => {
-    // eslint-disable-next-line no-console
-    console.log(state.links)
-    // eslint-disable-next-line no-console
-    console.log(link)
-    return state.links.find(l => l.url === `/${link.id}`)
+  getCategoriesIdByLink: state => (urlSlug) => {
+    const link = state.links.find(l => l.url === `/${urlSlug}`)
+    if (link) {
+      return link.categories.map(c => c.code)
+    }
+    return []
   }
 }
 export const actions = {
@@ -28,13 +28,20 @@ export const actions = {
     store.commit('setLinks', data.links)
   },
   async loadProductsByCategories ({ commit, getters }, payload) {
-    const { data } = await this.app.apolloProvider.defaultClient.query({ query: productsByCategoriesQuery, variables: getters.getCategoryByLink(payload) })
-    // eslint-disable-next-line no-console
-    console.log('data:' + data)
-    let allUsers = []
+    const categoriesId = getters.getCategoriesIdByLink(payload)
+
+    const { data } = await this.app.apolloProvider.defaultClient.query({ query: productsByCategoriesQuery, variables: { categoriesId } })
+
+    let allProducts = []
     data.categories.forEach(function (obj) {
-      allUsers = allUsers.concat(obj.products)
+      allProducts = allProducts.concat(obj.products)
     })
-    commit('setProducts', allUsers)
+    const foo = new Map()
+    for (const product of allProducts) {
+      foo.set(product.id, product)
+    }
+    const distinctProducts = [...foo.values()]
+
+    commit('setProducts', distinctProducts)
   }
 }

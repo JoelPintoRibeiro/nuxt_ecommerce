@@ -26,10 +26,10 @@
 <script>
 // import categoriesQuery from '~/apollo/queries/category/categories'
 export default {
-  asyncData ({ route, store, params }) {
-    store.dispatch('loadProductsByCategories', {
-      slug: route.params.id
-    })
+  async fetch ({ route, store, params }) {
+    await store.dispatch('loadProductsByCategories',
+      route.params.id
+    )
   },
   data () {
     return {
