@@ -1,6 +1,6 @@
 <template>
   <div class="flex justify-center m-6">
-    <div v-if="this.product !== null">
+    <div v-if="product !== null">
       <div class="flex flex-col items-center border rounded-lg bg-gray-100">
         <div class="w-full bg-white rounded-lg flex justify-center">
           <img :src="product.image" width="375">

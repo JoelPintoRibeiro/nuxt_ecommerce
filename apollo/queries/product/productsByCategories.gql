@@ -1,0 +1,9 @@
+query ProductsByCategories {
+  categories(where: { id_contains: [1, 2, 3] }) {
+    id
+    products {
+      id
+      title
+    }
+  }
+}

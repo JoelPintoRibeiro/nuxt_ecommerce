@@ -1,6 +1,6 @@
 <template>
   <li :key="completeItem.id" class="menu-item hover:font-semibold">
-    <nuxt-link v-if="completeItem.links_child && completeItem.links_child.length===0" :to="'category'+completeItem.url">
+    <nuxt-link v-if="completeItem.links_child && completeItem.links_child.length===0" :to="'/category'+completeItem.url">
       {{ completeItem.label }}
     </nuxt-link>
     <span v-if="completeItem.links_child && completeItem.links_child.length>0" @click="childVisible=!childVisible">
